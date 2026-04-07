@@ -43,6 +43,15 @@ jobs:
       - name: Build package
         run: uv build
 
+      - name: Run tests
+        run: uv run pytest --cov=heretic --cov-report=xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: false
+
       - name: Verify build artifacts
         run: |
           if [ ! -d "dist" ]; then

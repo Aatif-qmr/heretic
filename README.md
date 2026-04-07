@@ -2,6 +2,8 @@
 
 # Heretic: Fully automatic censorship removal for language models<br><br>[![Discord](https://img.shields.io/discord/1447831134212984903?color=5865F2&label=discord&labelColor=black&logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/gdXc48gSyT) [![Follow us on Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/follow-us-on-hf-md-dark.svg)](https://huggingface.co/heretic-org)
 
+> **Credits:** Heretic was originally created by [Philipp Emanuel Weidmann (p-e-w)](https://github.com/p-e-w/heretic). This repository is a maintained fork with professional enhancements and community improvements. Original project: [p-e-w/heretic](https://github.com/p-e-w/heretic)
+
 Heretic is a tool that removes censorship (aka "safety alignment") from
 transformer-based language models without expensive post-training.
 It combines an advanced implementation of directional ablation, also known
@@ -31,13 +33,13 @@ by human experts:
 | [google/gemma-3-12b-it](https://huggingface.co/google/gemma-3-12b-it) (original) | 97/100 | 0 *(by definition)* |
 | [mlabonne/gemma-3-12b-it-abliterated-v2](https://huggingface.co/mlabonne/gemma-3-12b-it-abliterated-v2) | 3/100 | 1.04 |
 | [huihui-ai/gemma-3-12b-it-abliterated](https://huggingface.co/huihui-ai/gemma-3-12b-it-abliterated) | 3/100 | 0.45 |
-| **[p-e-w/gemma-3-12b-it-heretic](https://huggingface.co/p-e-w/gemma-3-12b-it-heretic) (ours)** | **3/100** | **0.16** |
+| **[Aatif-qmr/gemma-3-12b-it-heretic](https://huggingface.co/Aatif-qmr/gemma-3-12b-it-heretic) (ours)** | **3/100** | **0.16** |
 
 The Heretic version, generated without any human effort, achieves the same
 level of refusal suppression as other abliterations, but at a much lower
 KL divergence, indicating less damage to the original model's capabilities.
 *(You can reproduce those numbers using Heretic's built-in evaluation functionality,
-e.g. `heretic --model google/gemma-3-12b-it --evaluate-model p-e-w/gemma-3-12b-it-heretic`.
+e.g. `heretic --model google/gemma-3-12b-it --evaluate-model Aatif-qmr/gemma-3-12b-it-heretic`.
 Note that the exact values might be platform- and hardware-dependent.
 The table above was compiled using PyTorch 2.8 on an RTX 5090.)*
 
@@ -46,20 +48,20 @@ story, and are no substitute for human evaluation. Models generated with
 Heretic have been well-received by users (links and emphasis added):
 
 > "I was skeptical before, but I just downloaded
-> [**GPT-OSS 20B Heretic**](https://huggingface.co/p-e-w/gpt-oss-20b-heretic)
+> [**GPT-OSS 20B Heretic**](https://huggingface.co/Aatif-qmr/gpt-oss-20b-heretic)
 > model and holy shit. It gives properly formatted long responses to sensitive topics,
 > using the exact uncensored words that you would expect from an uncensored model,
 > produces markdown format tables with details and whatnot. Looks like this is
 > the best abliterated version of this model so far..."
 > [*(Link to comment)*](https://old.reddit.com/r/LocalLLaMA/comments/1oymku1/heretic_fully_automatic_censorship_removal_for/np6tba6/)
 
-> "[**Heretic GPT 20b**](https://huggingface.co/p-e-w/gpt-oss-20b-heretic)
+> "[**Heretic GPT 20b**](https://huggingface.co/Aatif-qmr/gpt-oss-20b-heretic)
 > seems to be the best uncensored model I have tried yet. It doesn't destroy a
 > the model's intelligence and it is answering prompts normally would be
 > rejected by the base model."
 > [*(Link to comment)*](https://old.reddit.com/r/LocalLLaMA/comments/1oymku1/heretic_fully_automatic_censorship_removal_for/npe9jng/)
 
-> "[[**Qwen3-4B-Instruct-2507-heretic**](https://huggingface.co/p-e-w/Qwen3-4B-Instruct-2507-heretic)]
+> "[[**Qwen3-4B-Instruct-2507-heretic**](https://huggingface.co/Aatif-qmr/Qwen3-4B-Instruct-2507-heretic)]
 > Has been the best unquantized abliterated model that I have been able to run on 16gb vram."
 > [*(Link to comment)*](https://old.reddit.com/r/LocalLLaMA/comments/1phjxca/im_calling_these_people_out_right_now/nt06tji/)
 
@@ -264,14 +266,23 @@ If you use Heretic for your research, please cite it using the following BibTeX 
   year = {2025},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/p-e-w/heretic}}
+  howpublished = {\url{https://github.com/Aatif-qmr/Uncensored-AI}}
 }
 ```
 
 
+## Credits
+
+Heretic was originally created by [Philipp Emanuel Weidmann (p-e-w)](https://github.com/p-e-w/heretic). The core research and implementation of directional ablation (abliteration) is based on the work of:
+
+- **Arditi et al. 2024** - [Representation Engineering: A Top-Down Approach to AI Transparency](https://arxiv.org/abs/2406.11717)
+- **Lai 2025** - [Projected Abliteration](https://huggingface.co/blog/grimjim/projected-abliteration) and [Norm-Preserving Biporjected Abliteration](https://huggingface.co/blog/grimjim/norm-preserving-biprojected-abliteration)
+
+This repository extends the original project with professional tooling, community guidelines, testing infrastructure, and Docker support.
+
 ## License
 
-Copyright &copy; 2025-2026  Philipp Emanuel Weidmann (<pew@worldwidemann.com>) + contributors
+Copyright &copy; 2025-2026  Philipp Emanuel Weidmann (p-e-w) &lt;pew@worldwidemann.com&gt; + Aatif Qmr + contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
